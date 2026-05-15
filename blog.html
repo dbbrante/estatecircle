@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>The Journal — Estate Circle</title>
+  <meta name="description" content="Insights and guides for luxury estate owners across the United States. Custom pools, home theaters, smart home systems, outdoor kitchens and more." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #EEEDE8;
+      color: #1A1917;
+      font-family: 'Cormorant Garamond', serif;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 56px;
+      background: #EEEDE8;
+      border-bottom: 1px solid #D4D0CA;
+    }
+    .nav-logo img { height: 40px; display: block; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6b6860;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #1A1917; }
+    .nav-cta {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #EEEDE8 !important;
+      background: #1A1917;
+      padding: 9px 20px;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: #2d2b28; }
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 20px; }
+      .nav-links { gap: 18px; }
+      .nav-links li.hide-mobile { display: none; }
+    }
+
+    /* ── PAGE ── */
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 136px 24px 100px;
+      text-align: center;
+    }
+    .rule {
+      width: 1px; height: 60px;
+      background: #C8C4BE;
+      margin: 0 auto 48px;
+    }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6b6860;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .page-headline {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .page-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      font-weight: 300;
+      line-height: 1.75;
+      color: #4a4845;
+      margin-bottom: 64px;
+    }
+    .divider {
+      width: 40px; height: 1px;
+      background: #C8C4BE;
+      margin: 0 auto 64px;
+    }
+    .articles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px 40px;
+      text-align: left;
+    }
+    .article-card {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      border-top: 1px solid #C8C4BE;
+      padding-top: 24px;
+    }
+    .article-card:hover .article-title { opacity: 0.6; }
+    .article-tag {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #6b6860;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .article-title {
+      font-size: clamp(18px, 2.5vw, 22px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.35;
+      margin-bottom: 12px;
+      transition: opacity 0.2s ease;
+    }
+    .article-excerpt {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #4a4845;
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid #D4D0CA;
+      padding: 56px 48px 48px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    .footer-logo img {
+      height: 48px;
+      display: block;
+      margin: 0 auto 24px;
+    }
+    .footer-copy {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: #9C9890;
+      letter-spacing: 0.04em;
+    }
+    .footer-copy a { color: #9C9890; text-decoration: none; }
+    .footer-copy a:hover { color: #6b6860; }
+
+    @media (max-width: 560px) {
+      .articles { grid-template-columns: 1fr; gap: 40px; }
+      .site-footer { padding: 44px 24px 36px; }
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: #1A1917;
+      transition: all 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 20px; }
+      nav { padding: 0 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 56px; left: 0; right: 0;
+        background: #EEEDE8;
+        border-bottom: 1px solid #D4D0CA;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0 16px;
+        z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { display: block; padding: 12px 24px; font-size: 13px; }
+      .nav-links .enquire-btn, .nav-links .nav-cta {
+        margin: 8px 24px 0;
+        text-align: center;
+        display: block;
+        padding: 12px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+     <a href="/" class="nav-logo"><img src="https://estatecircle.co/images/ec_logo2.png" alt="Estate Circle" /></a><button class="nav-hamburger" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li class="hide-mobile"><a href="/for-partners.html">For Partners</a></li>
+      <li class="hide-mobile"><a href="/blog/case-studies.html">Case Studies</a></li>
+      <li class="hide-mobile"><a href="/blog.html" class="active">Journal</a></li>
+      <li><a href="/contact.html" class="nav-cta">Enquire</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <!--<div class="rule"></div>-->
+    <span class="section-label">The Journal</span>
+    <h1 class="page-headline">Insights for the discerning estate owner.</h1>
+    <p class="page-sub">Guides, ideas and inspiration for upgrading and personalising your private estate.</p>
+    <div class="divider"></div>
+
+    <div class="articles">
+
+      <a href="/blog/custom-pool-miami.html" class="article-card">
+        <span class="article-tag">Pool &amp; Spa</span>
+        <h2 class="article-title">Custom pools in Miami &mdash; what to expect and how to choose the right builder</h2>
+        <p class="article-excerpt">Everything a luxury homeowner needs to know before starting a custom pool project at their Miami estate.</p>
+      </a>
+
+      <a href="/blog/home-theater-miami.html" class="article-card">
+        <span class="article-tag">Home Theater</span>
+        <h2 class="article-title">The best home theater installers in Miami &mdash; and what sets them apart</h2>
+        <p class="article-excerpt">A guide to creating a private cinema experience in your home, from screen size to acoustic design.</p>
+      </a>
+
+      <a href="/blog/smart-home-miami.html" class="article-card">
+        <span class="article-tag">Smart Home</span>
+        <h2 class="article-title">Smart home upgrades worth doing after buying a luxury home in Miami</h2>
+        <p class="article-excerpt">The technology investments that add the most value, comfort and security to a Miami estate.</p>
+      </a>
+
+      <a href="/blog/outdoor-kitchen-miami.html" class="article-card">
+        <span class="article-tag">Outdoor Living</span>
+        <h2 class="article-title">Luxury outdoor kitchen ideas for Miami estates</h2>
+        <p class="article-excerpt">How to design an outdoor entertaining space that matches Miami's climate and your lifestyle.</p>
+      </a>
+
+      <a href="/blog/tennis-court-miami.html" class="article-card">
+        <span class="article-tag">Sports &amp; Recreation</span>
+        <h2 class="article-title">How to add a tennis or pickleball court to your Miami property</h2>
+        <p class="article-excerpt">What you need to know about space, surface, planning permission and finding the right contractor.</p>
+      </a>
+
+      <a href="/blog/estate-concierge-service.html" class="article-card">
+        <span class="article-tag">Concierge</span>
+        <h2 class="article-title">What is a luxury estate concierge service &mdash; and do you need one?</h2>
+        <p class="article-excerpt">How a private concierge platform saves time, eliminates stress and gets better results for your estate projects.</p>
+      </a>
+
+      <a href="/blog/wine-cellar-miami.html" class="article-card">
+        <span class="article-tag">Wine &amp; Entertaining</span>
+        <h2 class="article-title">Custom wine cellars for Miami estates &mdash; design, climate and installation</h2>
+        <p class="article-excerpt">A complete guide to building a wine cellar that works in South Florida's climate.</p>
+      </a>
+
+      <a href="/blog/estate-upgrades-value.html" class="article-card">
+        <span class="article-tag">Investment</span>
+        <h2 class="article-title">Estate upgrades that add the most value in South Florida</h2>
+        <p class="article-excerpt">Which home improvements deliver the best return &mdash; financially and in quality of life &mdash; for Miami estate owners.</p>
+      </a>
+
+      <a href="/blog/how-to-manage-luxury-home-renovation.html" class="article-card">
+        <span class="article-tag">Estate Renovation</span>
+        <h2 class="article-title">How to manage a luxury home renovation without the stress</h2>
+        <p class="article-excerpt">Why the system is wrong if renovation occupies your mind every day &mdash; and how the right structure fixes it.</p>
+      </a>
+
+      <a href="/blog/how-to-add-guest-house-luxury-estate.html" class="article-card">
+        <span class="article-tag">Guest House</span>
+        <h2 class="article-title">How to add a guest house to a luxury estate</h2>
+        <p class="article-excerpt">The most versatile estate upgrade available &mdash; what it involves, what it costs, and how to get it right.</p>
+      </a>
+
+      <a href="/blog/how-to-find-home-theater-installer-luxury-estate.html" class="article-card">
+        <span class="article-tag">Home Theater</span>
+        <h2 class="article-title">How to find a home theater installer for a luxury estate</h2>
+        <p class="article-excerpt">The difference between an installer and an integrator &mdash; and why it determines everything about the result.</p>
+      </a>
+
+      <a href="/blog/how-to-build-infinity-pool-luxury-estate.html" class="article-card">
+        <span class="article-tag">Custom Pool</span>
+        <h2 class="article-title">How to build an infinity pool at a luxury estate</h2>
+        <p class="article-excerpt">Who to hire, what the engineering involves, and why site and orientation decisions cannot be undone.</p>
+      </a>
+
+      <a href="/blog/best-wine-cellar-builders-luxury-estates.html" class="article-card">
+        <span class="article-tag">Wine Cellar</span>
+        <h2 class="article-title">The right way to build a custom wine cellar on a luxury estate</h2>
+        <p class="article-excerpt">What separates genuine specialists from general contractors &mdash; and the questions that reveal technical depth quickly.</p>
+      </a>
+
+      <a href="/blog/how-to-add-outdoor-kitchen-luxury-estate.html" class="article-card">
+        <span class="article-tag">Outdoor Living</span>
+        <h2 class="article-title">How to add a luxury outdoor kitchen to your estate</h2>
+        <p class="article-excerpt">One of the highest-ROI estate upgrades available &mdash; and more infrastructure than most homeowners expect.</p>
+      </a>
+
+      <a href="/blog/how-to-choose-smart-home-automation-luxury-estate.html" class="article-card">
+        <span class="article-tag">Smart Home</span>
+        <h2 class="article-title">How to choose a smart home automation system for a luxury estate</h2>
+        <p class="article-excerpt">Control4, Crestron or Savant &mdash; and why the installer matters far more than the platform.</p>
+      </a>
+
+      <a href="/blog/how-to-build-sports-court-luxury-estate.html" class="article-card">
+        <span class="article-tag">Sports Court</span>
+        <h2 class="article-title">How to build a private tennis, padel or pickleball court at your estate</h2>
+        <p class="article-excerpt">Tennis, padel or pickleball &mdash; how to choose, what it costs, and why drainage determines longevity.</p>
+      </a>
+
+      <a href="/blog/who-builds-private-boat-docks-luxury-estates.html" class="article-card">
+        <span class="article-tag">Waterfront</span>
+        <h2 class="article-title">Who builds private boat docks for luxury waterfront estates</h2>
+        <p class="article-excerpt">Marine construction, environmental permits and why permitting is always the critical path.</p>
+      </a>
+
+      <a href="/blog/how-to-build-private-helipad-luxury-estate.html" class="article-card">
+        <span class="article-tag">Aviation</span>
+        <h2 class="article-title">How to build a private helipad at your estate</h2>
+        <p class="article-excerpt">More straightforward than most homeowners assume &mdash; and more regulated than it appears.</p>
+      </a>
+
+      <a href="/blog/is-there-a-service-that-manages-home-renovations.html" class="article-card">
+        <span class="article-tag">Estate Management</span>
+        <h2 class="article-title">Is there a service that manages home renovations for you?</h2>
+        <p class="article-excerpt">Yes &mdash; and the best version of it costs nothing. Here is how it works and what to look for.</p>
+      </a>
+
+      <a href="/blog/no-time-to-manage-home-renovation.html" class="article-card">
+        <span class="article-tag">Estate Management</span>
+        <h2 class="article-title">I don&rsquo;t have time to manage my home renovation &mdash; what are my options?</h2>
+        <p class="article-excerpt">Your options compared &mdash; from owner&rsquo;s rep to luxury concierge &mdash; and what each costs.</p>
+      </a>
+
+      <a href="/blog/what-is-a-luxury-home-concierge-service.html" class="article-card">
+        <span class="article-tag">Estate Management</span>
+        <h2 class="article-title">What is a luxury home concierge service?</h2>
+        <p class="article-excerpt">A general manager for your home &mdash; how the role works, who uses it and what the best version costs.</p>
+      </a>
+
+      <a href="/blog/how-to-find-trustworthy-contractors-expensive-home-projects.html" class="article-card">
+        <span class="article-tag">Finding Specialists</span>
+        <h2 class="article-title">How to find trustworthy contractors for expensive home projects</h2>
+        <p class="article-excerpt">The process luxury homeowners and developers actually use &mdash; and why it starts with professional networks, not search engines.</p>
+      </a>
+
+      <a href="/blog/contractor-keeps-missing-deadlines.html" class="article-card">
+        <span class="article-tag">Renovation Management</span>
+        <h2 class="article-title">My contractor keeps missing deadlines &mdash; what should I do?</h2>
+        <p class="article-excerpt">What actually works, why delays happen and the structural change that prevents the problem on future projects.</p>
+      </a>
+
+      <a href="/blog/upgrade-luxury-home-without-dealing-with-contractors.html" class="article-card">
+        <span class="article-tag">Estate Management</span>
+        <h2 class="article-title">How to upgrade your luxury home without dealing with contractors</h2>
+        <p class="article-excerpt">One advisor. Every specialist. Zero contractor calls. Here is how the service layer model works.</p>
+      </a>
+
+      <a href="/blog/do-people-hire-someone-to-manage-home-projects.html" class="article-card">
+        <span class="article-tag">Estate Management</span>
+        <h2 class="article-title">Do people hire someone to manage their home projects?</h2>
+        <p class="article-excerpt">Yes &mdash; and among luxury homeowners it is almost universal. Here is who gets hired and what they do.</p>
+      </a>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+     <a href="/"><img src="https://estatecircle.co/images/estate_circle_logo2.png" alt="Estate Circle" style="height:48px;display:block;margin:0 auto 24px;" /></a>
+    <p class="footer-copy">&copy; 2025 Estate Circle &middot; Miami, Florida &middot; <a href="/cdn-cgi/l/email-protection#157d7079797a55706661746170767c677679703b767a"><span class="_

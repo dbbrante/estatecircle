@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>For Partners — Estate Circle</title>
+  <meta name="description" content="Join the Estate Circle partner network. Earn referral commissions by connecting your ultra-high-net-worth clients with the finest estate specialists in Miami." />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #EEEDE8;
+      color: #1A1917;
+      font-family: 'Cormorant Garamond', serif;
+      min-height: 100vh;
+    }
+
+        /* ── NAV ── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 56px;
+      background: #EEEDE8;
+      border-bottom: 1px solid #D4D0CA;
+    }
+    .nav-logo img { height: 36px; display: block; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6b6860;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #1A1917; }
+    .nav-cta {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #EEEDE8 !important;
+      background: #1A1917;
+      padding: 9px 20px;
+      text-decoration: none;
+    }
+    .nav-cta:hover { background: #2d2b28; }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: #1A1917;
+      transition: all 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    @media (max-width: 640px) {
+      .site-nav { padding: 0 20px; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 56px; left: 0; right: 0;
+        background: #EEEDE8;
+        border-bottom: 1px solid #D4D0CA;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0 16px;
+        z-index: 99;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        display: block;
+        padding: 12px 24px;
+        font-size: 13px;
+      }
+      .nav-links .nav-cta {
+        margin: 8px 24px 0;
+        text-align: center;
+        display: block;
+        padding: 12px 24px;
+      }
+    }
+    /* ── PAGE ── */
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .top-section {
+      padding-top: 72px;
+      padding-bottom: 0;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #6b6860;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .page-headline {
+      font-size: clamp(32px, 5.5vw, 52px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+      color: #1A1917;
+      margin-bottom: 52px;
+    }
+
+    /* ── HERO IMAGE — contained, not full bleed ── */
+    .hero-image-wrap {
+      max-width: 860px;
+      margin: 0 auto 72px;
+      padding: 0 24px;
+    }
+    .hero-image-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .section-headline {
+      font-size: clamp(22px, 3.5vw, 30px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.3;
+      color: #1A1917;
+      margin-bottom: 24px;
+    }
+
+    .body-text {
+      font-size: clamp(16px, 2.5vw, 19px);
+      font-weight: 300;
+      line-height: 1.75;
+      color: #1A1917;
+      margin-bottom: 20px;
+    }
+
+    .rule {
+      width: 1px;
+      height: 60px;
+      background: #C8C4BE;
+      margin: 52px auto;
+    }
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: #C8C4BE;
+      margin: 44px auto;
+    }
+
+    /* ── WHO WE WORK WITH ── */
+    .partner-types {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: #C8C4BE;
+      border: 1px solid #C8C4BE;
+      margin: 40px 0 0;
+      text-align: left;
+    }
+    .partner-type {
+      background: #EEEDE8;
+      padding: 26px 26px 22px;
+    }
+    .partner-type .pt-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #6b6860;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .partner-type .pt-title {
+      font-size: 17px;
+      font-weight: 400;
+      font-style: italic;
+      color: #1A1917;
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .partner-type .pt-desc {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: #4a4844;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps { margin: 40px 0; text-align: left; }
+    .step-row {
+      display: flex;
+      gap: 28px;
+      padding: 26px 0;
+      border-bottom: 1px solid #D4D0CA;
+    }
+    .step-row:last-child { border-bottom: none; }
+    .step-num {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: #9C9890;
+      min-width: 24px;
+      padding-top: 3px;
+    }
+    .step-content .step-title {
+      font-size: 17px;
+      font-weight: 400;
+      font-style: italic;
+      color: #1A1917;
+      margin-bottom: 8px;
+    }
+    .step-content .step-desc {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #4a4844;
+    }
+
+    /* ── COMMISSION ── */
+    .commission-block {
+      border: 1px solid #C8C4BE;
+      padding: 44px 48px;
+      margin: 48px 0;
+      text-align: left;
+    }
+    .commission-block .cb-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #6b6860;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .commission-block .cb-figure {
+      font-size: clamp(36px, 6vw, 54px);
+      font-weight: 300;
+      font-style: italic;
+      color: #1A1917;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .commission-block .cb-text {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: #4a4844;
+    }
+    .commission-block .cb-note {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #D4D0CA;
+      font-size: 13px;
+      font-style: italic;
+      color: #6b6860;
+      line-height: 1.6;
+    }
+
+    /* ── CREDIBILITY ── */
+    .credibility {
+      background: #1A1917;
+      padding: 52px 48px;
+      margin: 64px 0 48px;
+      text-align: left;
+    }
+    .credibility .cred-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9C9890;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .credibility .cred-text {
+      font-size: clamp(18px, 3vw, 24px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.5;
+      color: #EEEDE8;
+      margin-bottom: 20px;
+    }
+    .credibility .cred-detail {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #C8C4BE;
+    }
+
+    /* ── FAQ ── */
+    .faq-list { margin: 40px 0; text-align: left; }
+    .faq-item { padding: 22px 0; border-bottom: 1px solid #D4D0CA; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      font-size: 16px;
+      font-weight: 400;
+      font-style: italic;
+      color: #1A1917;
+      margin-bottom: 10px;
+    }
+    .faq-a {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #4a4844;
+    }
+
+    /* ── CTA ── */
+    .cta-block { margin-top: 16px; text-align: center; }
+    .cta-block p {
+      font-size: clamp(17px, 2.5vw, 21px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.65;
+      color: #1A1917;
+      margin-bottom: 36px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: #1A1917;
+      color: #EEEDE8;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 48px;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #2d2b28; }
+    .fine-print {
+      font-size: 13px;
+      font-style: italic;
+      color: #6b6860;
+      margin-top: 16px;
+    }
+
+    .bottom-section { padding-bottom: 120px; }
+
+    @media (max-width: 540px) {
+      .partner-types { grid-template-columns: 1fr; }
+      .credibility { padding: 40px 28px; }
+      .commission-block { padding: 32px 24px; }
+      .step-row { gap: 18px; }
+    }
+    /* footer */
+    .site-footer {
+      border-top: 1px solid #D4D0CA;
+      padding: 56px 48px 48px;
+      text-align: center;
+      margin-top: 80px;
+    }
+    .footer-copy {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-weight: 300;
+      color: #9C9890;
+      letter-spacing: 0.04em;
+    }
+    .footer-copy a { color: #9C9890; text-decoration: none; }
+    .footer-copy a:hover { color: #6b6860; }
+    .site-footer img { max-width: 120px; margin-bottom: 16px; }
+
+    /* Partner form */
+    .partner-form-section {
+      max-width: 760px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .form-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: #9C9890;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 48px;
+    }
+    .form-field {
+      margin-bottom: 40px;
+    }
+    .form-field input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #C8C4BC;
+      padding: 8px 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 17px;
+      font-style: italic;
+      font-weight: 300;
+      color: #3a3830;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .form-field input::placeholder {
+      color: #9C9890;
+    }
+    .form-field input:focus {
+      border-bottom-color: #3a3830;
+    }
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+    }
+    @media (max-width: 640px) {
+      .site-footer { padding: 44px 24px 36px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV — outside .page, full width -->
+
+
+     <nav class="site-nav">
+    <a href="/" class="nav-logo"><img src="https://estatecircle.co/images/ec_logo2.png" alt="Estate Circle" /></a>
+      
+    
+    <button class="nav-hamburger" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="/for-partners.html" class="active">For Partners</a></li>
+      <li><a href="/blog/case-studies.html">Case Studies</a></li>
+      <li><a href="/blog.html">Journal</a></li>
+      <li><a href="/contact.html" class="nav-cta">Enquire</a></li>
+    </ul>
+  </nav>
+
+  <!-- HEADLINE -->
+  <div class="page top-section">
+    <!--<div class="rule"></div>--><br><br><br>
+    <span class="eyebrow">Partner Program</span>
+    <h1 class="page-headline">Your clients deserve<br>the finest estates.<br>We make it happen.</h1>
+  </div>
+
+  <!-- IMAGE — contained, not full bleed -->
+  <div class="hero-image-wrap">
+   <img src="https://estatecircle.co/images/partnerhero.jpg" alt="Estate Circle" />
+  </div>
+  
+  <!-- REST OF PAGE -->
+  <div class="page bottom-section">
+
+    <p class="body-text">
+      Estate Circle is a private concierge platform serving ultra-high-net-worth homeowners across Miami. We connect them with the best vetted estate specialists in South Florida — and we share the upside with the partners who bring them to us.
+    </p>
+    <p class="body-text">
+      One introduction from you. We handle everything. You earn a meaningful commission on every closed project.
+    </p>
+
+    <div class="divider"></div>
+
+    <span class="eyebrow">Who we work with</span>
+    <h2 class="section-headline">The professionals closest<br>to our clients</h2>
+
+    <div class="partner-types">
+      <div class="partner-type">
+        <span class="pt-label">Real estate</span>
+        <div class="pt-title">Luxury Agents &amp; Brokers</div>
+        <p class="pt-desc">You know your clients' homes better than anyone. When they're ready to upgrade, you're the first call.</p>
+      </div>
+      <div class="partner-type">
+        <span class="pt-label">Marine</span>
+        <div class="pt-title">Yacht Brokers</div>
+        <p class="pt-desc">Clients who own yachts own exceptional homes. Estate improvements are a natural next conversation.</p>
+      </div>
+      <div class="partner-type">
+        <span class="pt-label">Finance</span>
+        <div class="pt-title">Wealth Managers &amp; Family Offices</div>
+        <p class="pt-desc">You oversee the full financial picture. Estate improvements are often the largest discretionary spend your clients make.</p>
+      </div>
+      <div class="partner-type">
+        <span class="pt-label">Private banking</span>
+        <div class="pt-title">Private Bankers</div>
+        <p class="pt-desc">Your ultra-high-net-worth clients trust you implicitly. A warm introduction from you carries significant weight.</p>
+      </div>
+      <div class="partner-type">
+        <span class="pt-label">Legal</span>
+        <div class="pt-title">Estate &amp; Tax Attorneys</div>
+        <p class="pt-desc">You advise clients on their most significant assets. Estate improvements often arise in long-term planning conversations.</p>
+      </div>
+      <div class="partner-type">
+        <span class="pt-label">Aviation</span>
+        <div class="pt-title">Private Aviation Brokers</div>
+        <p class="pt-desc">Clients flying private live at a certain level. Their homes are a natural extension of that standard.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="eyebrow">How it works</span>
+    <h2 class="section-headline">Simple for you.<br>Exceptional for your client.</h2>
+
+    <div class="steps">
+      <div class="step-row">
+        <span class="step-num">01</span>
+        <div class="step-content">
+          <div class="step-title">You make one introduction</div>
+          <p class="step-desc">When a client mentions their estate — a new pool, a renovation, smart home tech, anything — you send a quick message to your Estate Circle contact. No forms, no meetings required from you.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">02</span>
+        <div class="step-content">
+          <div class="step-title">We take it from there</div>
+          <p class="step-desc">Estate Circle contacts your client directly, understands the project, and presents the best vetted specialists in Miami for that exact scope of work. We coordinate site visits, negotiate terms, and stay close throughout.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">03</span>
+        <div class="step-content">
+          <div class="step-title">Your client gets a world-class result</div>
+          <p class="step-desc">We only work with specialists who consistently deliver. Your client's experience reflects well on you for the introduction. Most go on to use Estate Circle for future projects.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <span class="step-num">04</span>
+        <div class="step-content">
+          <div class="step-title">You receive your commission</div>
+          <p class="step-desc">When the project closes, we pay your referral commission directly. No follow-up needed. We track everything and arrange payment automatically.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <span class="eyebrow">What partners earn</span>
+
+    <div class="commission-block">
+      <span class="cb-label">Average referral earnings</span>
+      <div class="cb-figure">$8,000 – $10,000</div>
+      <p class="cb-text">
+        Our founding partners earn an average of $8,000 to $10,000 per closed referral. Larger projects — whole-estate renovations, full smart home integrations — earn considerably more.
+      </p>
+      <p class="cb-note">
+        Exact commission terms are shared with founding partners upon acceptance. Get in touch to learn more.
+      </p>
+    </div>
+
+    <div class="credibility">
+      <span class="cred-label">Why it works</span>
+      <p class="cred-text">"Your clients already want this.<br>They just don't know who to call."</p>
+      <p class="cred-detail">
+        Ultra-high-net-worth homeowners frequently delay or abandon estate improvement projects — not because of budget, but because they can't easily find specialists who work at their level. Estate Circle solves that. You become the person who connected them to the solution.
+      </p>
+    </div>
+
+    <span class="eyebrow">Common questions</span>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Do I need to do anything after the introduction?</div>
+        <p class="faq-a">No. Once you make the introduction, Estate Circle handles everything. We'll update you when the project closes and process your commission automatically.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Will this affect my relationship with my client?</div>
+        <p class="faq-a">Estate Circle operates discreetly and positions the introduction as a personal service you're providing your client. We never undercut your relationship — your client continues to see you as the trusted advisor who connected them with something exceptional.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What kinds of projects does Estate Circle handle?</div>
+        <p class="faq-a">Custom pools and spas, outdoor kitchens, home theaters, smart home systems, wine cellars, tennis courts, whole-home renovations, landscape design, guest houses, private docks, helicopter pads, and more.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What are the minimum project sizes?</div>
+        <p class="faq-a">We focus on projects of $50,000 and above, which naturally aligns with the estates we serve. There's no upper limit — we've coordinated projects well into seven figures.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Is this exclusive to Miami?</div>
+        <p class="faq-a">We're currently focused on Miami-Dade, Broward, and Palm Beach counties. If your clients have estates in those areas, we can work together regardless of where you're based.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How do I join?</div>
+        <p class="faq-a">We accept a limited number of founding partners to ensure each relationship gets the attention it deserves. Request access below and we'll be in touch personally within 24 hours.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cta-block">
+      <p>Founding partnerships are limited. Request your access below.</p>
+    </div>
+
+    <div class="partner-form-section" id="form-section">
+      <p class="form-label">REQUEST ACCESS</p>
+      <form name="partner-request" method="POST" data-netlify="true" action="/thanks.html">
+        <input type="hidden" name="form-name" value="partner-request" />
+        <div class="form-row">
+          <div class="form-field">
+            <input type="text" name="first_name" placeholder="First name" required />
+          </div>
+          <div class="form-field">
+            <input type="text" name="last_name" placeholder="Last name" required />
+          </div>
+        </div>
+        <div class="form-field">
+          <input type="email" name="email" placeholder="Email address" required />
+        </div>
+        <div class="form-field">
+          <input type="tel" name="phone" placeholder="Phone number (optional)" />
+        </div>
+        <div class="form-field">
+          <input type="text" name="company" placeholder="Company / Organisation" />
+        </div>
+        <div class="form-field">
+          <input type="text" name="profession" placeholder="Your profession (e.g. Wealth Manager, Yacht Broker)" />
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;margin-top:8px;">REQUEST ACCESS</button>
+        <p class="fine-print" style="margin-top:16px;">We'll be in touch personally.</p>
+      </form>
+    </div>
+
+    <div class="rule" style="margin-bottom: 0;"></div>
+
+  </div>
+
+        <footer class="site-footer">
+          <a href="/"><img src="https://estatecircle.co/images/estate_circle_logo2.png" alt="Estate Circle" /></a>
+          <p class="footer-copy">&copy; 2025 Estate Circle &middot; Miami, Florida &middot; <a href="/cdn-cgi/l/email-protection#224a474e4e4d62475156435647414b50414e470c414d"><span class="

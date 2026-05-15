@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Estate Consultation | Estate Circle</title>
+  <meta name="description" content="Book a free 30-minute consultation with your personal Estate Advisor. We'll walk through your property's biggest opportunities — no project required, no commitment." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <!-- Hidden Netlify form -->
+  <form name="free-consultation" netlify netlify-honeypot="bot-field" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <input type="tel" name="phone" />
+    <input type="text" name="address" />
+    <input type="text" name="property-value" />
+    <input type="text" name="message" />
+  </form>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--cream:#EEEDE8;--dark:#1a1a18;--mid:#4a4a44;--accent:#8B7355;--gold:#B8936A;--border:rgba(26,26,24,0.08);--light:#F5F4F0}
+    body{font-family:'Cormorant Garamond',Georgia,serif;background:var(--cream);color:var(--dark);-webkit-font-smoothing:antialiased}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;height:56px;background:var(--cream);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:100}
+    .nav-logo img{height:32px;display:block}
+    .nav-links{display:flex;align-items:center;gap:36px;font-family:'Montserrat',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+    .nav-links a{color:var(--dark);text-decoration:none;opacity:.7;transition:opacity .2s}
+    .nav-links a:hover{opacity:1}
+    .nav-links .enquire-btn{background:var(--dark);color:var(--cream);padding:8px 20px;opacity:1;letter-spacing:.14em}
+    .nav-links .enquire-btn:hover{background:#333}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .nav-hamburger span{display:block;width:22px;height:1px;background:#1A1917;transition:all .3s}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+    .nav-hamburger.open span:nth-child(2){opacity:0}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+    /* HERO */
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:80px 60px;padding-top:calc(56px + 80px);max-width:1200px;margin:0 auto}
+    .hero-left{display:flex;flex-direction:column;justify-content:flex-start}
+    .hero-right{display:flex;flex-direction:column;justify-content:flex-start;padding-top:8px}
+    .advisor-image-wrap{border-top:1px solid var(--border)}
+    .advisor-image{width:100%;max-height:620px;object-fit:cover;object-position:center 15%;display:block}
+    .eyebrow{font-family:'Montserrat',sans-serif;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block;font-weight:600}
+    .hero-title{font-size:clamp(2.8rem,4vw,3.8rem);font-weight:300;line-height:1.1;color:var(--dark);margin-bottom:24px}
+    .hero-title em{font-style:italic;color:var(--accent)}
+    .hero-body{font-size:1.15rem;font-weight:300;line-height:1.8;color:var(--mid);max-width:460px;margin-bottom:48px}
+    .trust-row{display:flex;flex-direction:column;gap:14px;margin-bottom:48px}
+    .trust-item{display:flex;align-items:center;gap:12px;font-size:1.1rem;font-weight:300;color:var(--mid)}
+    .trust-item::before{content:'✓';font-size:.75rem;color:var(--gold);flex-shrink:0;font-family:'Montserrat',sans-serif}
+
+    /* FORM */
+    .form-wrap{background:var(--light);border:1px solid var(--border);padding:48px 40px;max-width:100%}
+    .form-title{font-size:1.3rem;font-weight:400;color:var(--dark);margin-bottom:6px}
+    .form-sub{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);opacity:.55;margin-bottom:36px}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+    .form-group{margin-bottom:24px}
+    .form-group label{display:block;font-family:'Montserrat',sans-serif;font-size:9px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);opacity:.7;margin-bottom:10px}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 0;background:transparent;border:none;border-bottom:1px solid rgba(26,26,24,.15);font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;color:var(--dark);outline:none;transition:border-color .2s;-webkit-appearance:none;resize:none}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-bottom-color:var(--accent)}
+    .form-group input::placeholder,.form-group textarea::placeholder{color:rgba(26,26,24,.25)}
+    .form-group.full{grid-column:1/-1}
+    .select-wrap{position:relative}
+    .select-wrap::after{content:'↓';position:absolute;right:0;top:10px;font-size:.8rem;color:var(--accent);pointer-events:none}
+    .form-note{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.06em;color:var(--mid);opacity:.45;line-height:1.7;margin-bottom:24px;grid-column:1/-1}
+    .btn-submit{width:100%;padding:16px;background:var(--dark);color:var(--cream);font-family:'Montserrat',sans-serif;font-size:11px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;border:none;cursor:pointer;transition:background .25s}
+    .btn-submit:hover{background:var(--accent)}
+
+    /* WHAT TO EXPECT */
+    .expect-section{background:var(--light);border-top:1px solid var(--border);padding:80px 40px}
+    .expect-inner{max-width:900px;margin:0 auto}
+    .section-label{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:48px;display:block}
+    .expect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+    .expect-card{background:var(--cream);padding:36px 32px}
+    .expect-num{font-size:2rem;font-weight:300;color:var(--gold);margin-bottom:16px;line-height:1}
+    .expect-title{font-size:1.1rem;font-weight:400;color:var(--dark);margin-bottom:10px}
+    .expect-body{font-size:.88rem;font-weight:300;line-height:1.7;color:var(--mid)}
+
+    /* ABOUT */
+    .about-section{max-width:900px;margin:0 auto;padding:80px 40px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;border-top:1px solid var(--border)}
+    .about-label{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:20px;display:block}
+    .about-title{font-size:1.8rem;font-weight:300;color:var(--dark);margin-bottom:20px;line-height:1.2}
+    .about-body{font-size:.95rem;font-weight:300;line-height:1.8;color:var(--mid)}
+    .about-stats{display:flex;flex-direction:column;gap:32px}
+    .about-stat-val{font-size:2.4rem;font-weight:300;color:var(--accent);line-height:1;margin-bottom:6px}
+    .about-stat-label{font-size:.82rem;font-weight:300;color:var(--mid);line-height:1.5}
+
+    .site-footer{border-top:1px solid #D4D0CA;padding:56px 48px 48px;text-align:center;margin-top:80px}
+
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;gap:48px;padding:60px 32px;padding-top:calc(56px + 60px)}
+      .hero-right{width:100%}
+      .form-wrap{max-width:100%}
+      .expect-grid{grid-template-columns:1fr}
+      .about-section{grid-template-columns:1fr;gap:40px;padding:60px 32px}
+    }
+    @media(max-width:640px){
+      nav{padding:0 20px}
+      .nav-hamburger{display:flex}
+      .nav-links{display:none;position:fixed;top:56px;left:0;right:0;background:var(--cream);border-bottom:1px solid #D4D0CA;flex-direction:column;align-items:stretch;gap:0;padding:8px 0 16px;z-index:99}
+      .nav-links.open{display:flex}
+      .nav-links a{display:block;padding:12px 24px;font-size:13px}
+      .nav-links .enquire-btn{margin:8px 24px 0;text-align:center;display:block;padding:12px 24px}
+      .hero{padding:24px 20px 40px;padding-top:calc(56px + 32px);gap:32px}
+      .hero-left{text-align:center;align-items:center}
+      .hero-body{max-width:100%;text-align:center}
+      .trust-row{align-items:flex-start;display:inline-flex;flex-direction:column;text-align:left}
+      .trust-item{text-align:left}
+      .form-wrap{padding:32px 20px}
+      .form-row{grid-template-columns:1fr}
+      .form-wrap{padding:36px 24px}
+      .form-row{grid-template-columns:1fr}
+      .expect-section{padding:60px 24px}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo"><img src="https://estatecircle.co/images/ec_logo2.png" alt="Estate Circle" /></a>
+    <button class="nav-hamburger" aria-label="Menu" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></button>
+    <div class="nav-links">
+      <a href="/for-partners">For Partners</a>
+      <a href="/blog/case-studies">Case Studies</a>
+      <a href="/blog">Journal</a>
+      <a href="/contact" class="enquire-btn">Enquire</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-left">
+      <span class="eyebrow">Free 30-Minute Consultation</span>
+      <h1 class="hero-title">Not sure where<br/>to <em>start</em>?</h1>
+      <p class="hero-body">Your personal Estate Advisor will walk through your property's biggest opportunities — what projects make sense, what the market rewards, and what to do first. No project required. No commitment.</p>
+
+      <div class="trust-row">
+        <div class="trust-item">30 minutes, completely free</div>
+        <div class="trust-item">No project required to book</div>
+        <div class="trust-item">No commitment, no sales pitch</div>
+        <div class="trust-item">Your Advisor confirms within 24 hours</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="form-wrap">
+        <h2 class="form-title">Book your free consultation</h2>
+        <p class="form-sub">Your Advisor will confirm a time within 24 hours</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="f-name" placeholder="Full name" autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="f-phone" placeholder="+1 (305) 000 0000" autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label>Email Address</label>
+          <input type="email" id="f-email" placeholder="your@email.com" autocomplete="email" />
+        </div>
+
+        <div class="form-group full">
+          <label>Property Address</label>
+          <input type="text" id="f-address" placeholder="e.g. 123 Palm Avenue, Miami Beach, FL" autocomplete="street-address" />
+        </div>
+
+        <div class="form-group full">
+          <label>Estimated Property Value</label>
+          <div class="select-wrap">
+            <select id="f-value">
+              <option value="" disabled selected>Select a range</option>
+              <option>$3M – $5M</option>
+              <option>$5M – $8M</option>
+              <option>$8M – $12M</option>
+              <option>$12M – $20M</option>
+              <option>$20M+</option>
+              <option>I don't know</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label>Anything specific on your mind? (optional)</label>
+          <textarea id="f-message" rows="3" placeholder="e.g. thinking about adding a pool, not sure where to start..."></textarea>
+        </div>
+
+        <p class="form-note" style="grid-column:1/-1">We never share your details with third parties. Your Advisor will reach out within 24 hours to confirm a time that works for you.</p>
+
+        <button class="btn-submit" onclick="submitForm()">Request My Free Consultation →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="advisor-image-wrap">
+    <img class="advisor-image" src="https://estatecircle.co/images/owners-pool.jpg" alt="Your Estate Advisor" />
+  </div>
+
+  <!-- WHAT TO EXPECT -->
+  <div class="expect-section">
+    <div class="expect-inner">
+      <span class="section-label">What happens in your consultation</span>
+      <div class="expect-grid">
+        <div class="expect-card">
+          <div class="expect-num">01</div>
+          <div class="expect-title">Your estate, honestly assessed</div>
+          <p class="expect-body">Your Advisor will ask about your property, what you already have, and what you're considering. No assumptions, no agenda — just a clear picture of where you are.</p>
+        </div>
+        <div class="expect-card">
+          <div class="expect-num">02</div>
+          <div class="expect-title">What the market actually rewards</div>
+          <p class="expect-body">We'll walk through what comparable estates in your area are selling with, which projects deliver the strongest return, and what buyers at your price point expect.</p>
+        </div>
+        <div class="expect-card">
+          <div class="expect-num">03</div>
+          <div class="expect-title">A clear next step if you want one</div>
+          <p class="expect-body">If there's a project worth pursuing, we'll tell you what it would involve and how Estate Circle can help. If now isn't the right time, we'll tell you that too.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about-section">
+    <div>
+      <span class="about-label">About Estate Circle</span>
+      <h2 class="about-title">Miami's private estate concierge network</h2>
+      <p class="about-body">Estate Circle connects estate owners with the most capable specialists for major property projects — pools, docks, wine cellars, home theatres, smart home systems, outdoor kitchens, and full renovations. We handle the search, the vetting, and the coordination. There is no fee to homeowners, ever.</p>
+    </div>
+    <div class="about-stats">
+      <div>
+        <div class="about-stat-val">$3M+</div>
+        <div class="about-stat-label">Minimum estate value we work with.<br/>Every specialist on our network is vetted for this level.</div>
+      </div>
+      <div>
+        <div class="about-stat-val">48h</div>
+        <div class="about-stat-label">From your first call to specialist introductions.<br/>We move at your pace.</div>
+      </div>
+      <div>
+        <div class="about-stat-val">0</div>
+        <div class="about-stat-label">Fees to homeowners. Ever.<br/>Our model means you never pay for our service.</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <a href="/"><img src="https://estatecircle.co/images/estate_circle_logo2.png" alt="Estate Circle" style="max-width:120px;height:auto;display:block;margin:0 auto 20px;" /></a>
+    <p style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.1em;color:#999;">&copy; 2025 Estate Circle &middot; Miami, Florida</p>
+  </footer>
+
+  <script>
+    function submitForm(){
+      const name=document.getElementById('f-name').value.trim();
+      const phone=document.getElementById('f-phone').value.trim();
+      const email=document.getElementById('f-email').value.trim();
+      const address=document.getElementById('f-address').value.trim();
+      const value=document.getElementById('f-value').value;
+      const message=document.getElementById('f-message').value.trim();
+      if(!name||!phone||!email||!address||!value){alert('Please fill in all required fields.');return;}
+      const fd=new FormData();
+      fd.append('form-name','free-consultation');
+      fd.append('name',name);fd.append('phone',phone);fd.append('email',email);
+      fd.append('address',address);fd.append('property-value',value);
+      fd.append('message',message||'Not provided');
+      fetch('/',{method:'POST',body:fd})
+        .then(()=>{
+          document.querySelector('.form-wrap').innerHTML=`
+            <div style="text-align:center;padding:32px 0">
+              <p style="font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8B7355;margin-bottom:20px">Request Received</p>
+              <h2 style="font-size:1.8rem;font-weight:300;color:#1a1a18;margin-bottom:16px;line-height:1.3">Your Advisor will be<br/>in touch within 24 hours</h2>
+              <p style="font-size:.9rem;font-weight:300;color:#4a4a44;line-height:1.75">We'll confirm a time that works for you.<br/>In the meantime, explore your estate's value potential.</p>
+              <a href="/estate-value-report" style="display:inline-block;margin-top:28px;padding:14px 32px;background:#1a1a18;color:#EEEDE8;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;">Get Your Free Estate Report →</a>
+            </div>`;
+        })
+        .catch(()=>{
+          document.querySelector('.form-wrap').innerHTML=`
+            <div style="text-align:center;padding:32px 0">
+              <h2 style="font-size:1.8rem;font-weight:300;color:#1a1a18;margin-bottom:16px">Thank you</h2>
+              <p style="font-size:.9rem;font-weight:300;color:#4a4a44;line-height:1.75">Your request has been received.<br/>Your Advisor will be in touch within 24 hours.</p>
+            </div>`;
+        });
+    }
+  </script>
+
+</body>
+</html>
